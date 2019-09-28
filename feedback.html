@@ -4,7 +4,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Feedback Form</title>
 <style>
-body {font-family: Arial, Helvetica, sans-serif;}
+body {
+  max-width: 500px;
+  padding: 10px 20px;
+  background: rgba(255,255,255,.1);
+  margin: 10px auto;
+  padding: 20px;
+  border-radius: 8px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  }
 
 input[type=text], select, textarea {
     width: 100%;
@@ -15,6 +23,8 @@ input[type=text], select, textarea {
     margin-top: 6px;
     margin-bottom: 16px;
     resize: vertical;
+    background-color: #e8eeef;
+    color:#658cd6;
 }
 
 input[type=submit] {
@@ -32,7 +42,7 @@ input[type=submit]:hover {
 
 .container {
     border-radius: 5px;
-    background-color: #f2f2f2;
+    background-color: #f5d798;
     padding: 20px;
 }
 </style>
@@ -42,6 +52,7 @@ input[type=submit]:hover {
 <h3>Feedback Form</h3>
 
 <div class="container">
+
   <form action="problem.php" method="post">
     <label for="fname">Student ID</label>
     <input type="text" id="fname" name="sid" placeholder="Your ID..">
