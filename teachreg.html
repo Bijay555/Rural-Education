@@ -1,0 +1,41 @@
+<?php include 'sqlconnect.php';?>
+<?php
+
+// create a variable
+if (isset($_POST['name'])) {
+$name    = $_POST['name'];}
+
+if (isset($_POST['email'])) {
+$email   = $_POST['email'];}
+
+if (isset($_POST['phone'])) {
+$phone   = $_POST['phone'];}
+
+if (isset($_POST['subject'])) {
+$subj    = $_POST['subject'];}
+
+if (isset($_POST['education'])) {
+$education = $_POST['education'];}
+
+if (isset($_POST['location'])) {
+$location = $_POST['location'];}
+
+//Execute the query
+
+$name = "";
+$email = "";
+$phone = "";
+$subj = "";
+$education = "";
+$location = "";
+
+$query=mysqli_query($connect,"INSERT into teachers (Name,email,phone,subject,education,location) VALUES('" . $name . "','" . $email . "','" . $phone . "','" . $subj . "','" . $education . "','" . $location . "')");
+if ($query) {
+    echo "Registration successful <br> <br>";
+    echo "<a href='teachreg.html'>Go Back</a>";
+}
+else{
+echo "<p>Registration unsuccessful <br> <br></p>";
+	echo "<a href='teachreg.html'>Go Back</a>";
+}
+?>
