@@ -1,41 +1,157 @@
-<?php include 'sqlconnect.php';?>
-<?php
-
-// create a variable
-if (isset($_POST['name'])) {
-$name    = $_POST['name'];}
-
-if (isset($_POST['email'])) {
-$email   = $_POST['email'];}
-
-if (isset($_POST['phone'])) {
-$phone   = $_POST['phone'];}
-
-if (isset($_POST['subject'])) {
-$subj    = $_POST['subject'];}
-
-if (isset($_POST['education'])) {
-$education = $_POST['education'];}
-
-if (isset($_POST['location'])) {
-$location = $_POST['location'];}
-
-//Execute the query
-
-$name = "";
-$email = "";
-$phone = "";
-$subj = "";
-$education = "";
-$location = "";
-
-$query=mysqli_query($connect,"INSERT into teachers (Name,email,phone,subject,education,location) VALUES('" . $name . "','" . $email . "','" . $phone . "','" . $subj . "','" . $education . "','" . $location . "')");
-if ($query) {
-    echo "Registration successful <br> <br>";
-    echo "<a href='teachreg.html'>Go Back</a>";
+<html>
+<head><title>Teacher Registration</title></head>
+<style type="text/css">
+.form-style-5{
+    max-width: 500px;
+    padding: 10px 20px;
+    background: #f5d798;
+    margin: 10px auto;
+    padding: 20px;
+    background: #f5d798;
+    border-radius: 8px;
+    font-family: Georgia, "Times New Roman", Times, serif;
 }
-else{
-echo "<p>Registration unsuccessful <br> <br></p>";
-	echo "<a href='teachreg.html'>Go Back</a>";
+.form-style-5 fieldset{
+    border: none;
 }
-?>
+.form-style-5 legend {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+.form-style-5 label {
+    display: block;
+    margin-bottom: 8px;
+}
+.form-style-5 input[type="text"],
+.form-style-5 input[type="date"],
+.form-style-5 input[type="datetime"],
+.form-style-5 input[type="email"],
+.form-style-5 input[type="number"],
+.form-style-5 input[type="search"],
+.form-style-5 input[type="time"],
+.form-style-5 input[type="url"],
+.form-style-5 textarea,
+.form-style-5 select {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    background: rgba(255,255,255,.1);
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    margin: 0;
+    outline: 0;
+    padding: 7px;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    background-color: #e8eeef;
+    color:#658cd6;
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    margin-bottom: 30px;
+
+}
+.form-style-5 input[type="text"]:focus,
+.form-style-5 input[type="date"]:focus,
+.form-style-5 input[type="datetime"]:focus,
+.form-style-5 input[type="email"]:focus,
+.form-style-5 input[type="number"]:focus,
+.form-style-5 input[type="search"]:focus,
+.form-style-5 input[type="time"]:focus,
+.form-style-5 input[type="url"]:focus,
+.form-style-5 textarea:focus,
+.form-style-5 select:focus{
+    background: #d2d9dd;
+}
+.form-style-5 select{
+    -webkit-appearance: menulist-button;
+    height:35px;
+}
+.form-style-5 .number {
+    background: #1abc9c;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    font-size: 0.8em;
+    margin-right: 4px;
+    line-height: 30px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+    border-radius: 15px 15px 15px 0px;
+}
+
+.form-style-5 input[type="submit"],
+.form-style-5 input[type="button"]
+{
+    position: relative;
+    display: block;
+    padding: 19px 39px 18px 39px;
+    color: #FFF;
+    margin: 0 auto;
+    background: #1abc9c;
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    width: 100%;
+    border: 1px solid #16a085;
+    border-width: 1px 1px 3px;
+    margin-bottom: 10px;
+}
+.form-style-5 input[type="submit"]:hover,
+.form-style-5 input[type="button"]:hover
+{
+    background: #109177;
+}
+</style>
+<div class="form-style-5">
+<form action="t01.php" method="post">
+<fieldset>
+<legend><h1><bold><left style="margin-left:45px;">Teacher Forum</left></bold></h1>Teacher's Registration<br/><br><span class="number">1 </span>Candidate Info</legend>
+<input type="text" name="name" placeholder="Your Name *" required>
+<input type="email" name="email" placeholder="Your Email *" required>
+<input type="number" name="phone" placeholder="Your Phone No. *" required>
+<label for="job">Subject you want to teach:*</label>
+<select id="job" name="subject" required>
+<optgroup label="subject">
+  <option value="Maths & Sciences">Mathematics & Sciences</option>
+  <option value="English">English</option>
+  <option value="Social Science">Social Sciences</option>
+  <option value="Arts">History & Civics</option>
+  <option value="Regional Language">Regional Language</option>
+</optgroup>
+</select>
+</fieldset>
+<fieldset>
+<legend><span class="number">2</span> Additional Info</legend>
+<label for="education">Educational Qualification:* (You can't apply if you have not passed class 10 yet)</label>
+<select id="education" name="education">
+<optgroup label="Education">
+  <option value="P.hD.">Post Doctorate (P.hD.)</option>
+  <option value="Masters">Post Graduate (Masters)</option>
+  <option value="Bachelors">Graduate (Bachelors)</option>
+  <option value="Secondary/Higher Secondary">Class 10 or 12 Pass</option>
+</optgroup>
+</select>
+<label for="location">Preferred Working location:*</label>
+<select id="location" name="location">
+<optgroup label="location">
+  <option value="Mangalgiri">Mangalgiri</option>
+  <option value="Kuragallu">Kuragallu</option>
+  <option value="Neerukonda">Neerukonda</option>
+  <option value="Thadepalli">Thadepalli</option>
+</optgroup>
+</select>
+<label for="time">Time you can devote per week(hrs):*</label>
+<select id="time" name="time">
+<optgroup label="time">
+  <option value="2">2</option>
+  <option value="5">5</option>
+  <option value="7">7</option>
+  <option value="10">10</option>
+</optgroup>
+</select>
+</fieldset>
+<input type="submit" value="Apply" />
+</form>
+</div>
